@@ -5,3 +5,4 @@ attach/
 img/
 tmp/
 independen_newsletter.sql
+config/config_db.php
