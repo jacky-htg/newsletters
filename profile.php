@@ -28,6 +28,20 @@ $result->close();
 
 if ($_GET['id'] != 0 && empty($user)) exit('Invalid Token!');
 
+// save the log url
+$ip = get_client_ip_server();
+if ($ip && 'UNKNOWN' !== $ip) {
+    $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+    if(!$query || $query['status'] != 'success') {
+        $query = ['city'=> '', 'country' => ''];
+    }
+}
+
+$insert = "INSERT INTO " . $ConfigDB["prefix"] . "links (`url`, `user_id`, `ip`, `country`, `city`) VALUES ('{$_GET['url']}', {$_GET['id']}, '{$ip}', '{$query['country']}', '{$query['city']}')";
+if (!$dbh->query($insert)){
+    exit('Gagal insert log link');
+}
+            
 if(empty($user['city']) || empty($user['phone'])) {
     if ('POST' === $_SERVER['REQUEST_METHOD']) {
         if (validate($_POST)) {
@@ -71,4 +85,24 @@ function validate($form){
     }
     
     return true;
+}
+
+function get_client_ip_server() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+ 
+    return $ipaddress;
 }

@@ -123,6 +123,9 @@
 					<!-- IF '${ACCOUNT_ROLE}' == 'admin' || '${ACCOUNT_ROLE}' == 'moderator' -->
 					<li><a	<!-- IF '${ACTIVE_MENU}' == 'feedback' -->class="active"<!-- END IF -->	href="./?t=feedback" title="${MENU_FEEDBACK_TITLE}"><i class="fa fa-comments-o"></i> ${MENU_FEEDBACK}</a></li>
 					<!-- END IF -->
+					<!-- IF '${ACCOUNT_ROLE}' == 'admin' || '${ACCOUNT_ROLE}' == 'moderator' -->
+					<li><a	<!-- IF '${ACTIVE_MENU}' == 'links' -->class="active"<!-- END IF -->	href="./?t=links" title="${MENU_LINKS_TITLE}"><i class="fa fa-link"></i> ${MENU_LINKS}</a></li>
+					<!-- END IF -->
 					<li><a	<!-- IF '${ACTIVE_MENU}' == 'log' -->class="active"<!-- END IF -->	href="./?t=log" title="${MENU_LOG_TITLE}"><i class="fa fa-area-chart"></i> ${MENU_LOG}</a></li>
 					<!-- IF '${ACCOUNT_ROLE}' == 'admin' -->
 					<li><a	<!-- IF '${ACTIVE_MENU}' == 'settings' -->class="active"<!-- END IF -->	href="./?t=settings" title="${MENU_SETTINGS_TITLE}"><i class="fa fa-gear"></i> ${MENU_SETTINGS}</a></li>

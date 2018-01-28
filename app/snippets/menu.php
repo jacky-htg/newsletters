@@ -14,6 +14,8 @@ $tpl->assign('MENU_CATEGORY_TITLE', core::getLanguage('menu', 'category_title'))
 $tpl->assign('MENU_CATEGORY', core::getLanguage('menu', 'category_name'));
 $tpl->assign('MENU_FEEDBAK_TITLE', core::getLanguage('menu', 'feedback_title'));
 $tpl->assign('MENU_FEEDBACK', core::getLanguage('menu', 'feedback_name'));
+$tpl->assign('MENU_LINKS_TITLE', core::getLanguage('menu', 'links_title'));
+$tpl->assign('MENU_LINKS', core::getLanguage('menu', 'links_name'));
 $tpl->assign('MENU_SETTINGS_TITLE', core::getLanguage('menu', 'settings_title'));
 $tpl->assign('MENU_SETTINGS', core::getLanguage('menu', 'settings_name'));
 $tpl->assign('MENU_INTERFACE_SETTINGS_TITLE', core::getLanguage('menu', 'interface_settings_title'));
