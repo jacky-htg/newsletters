@@ -36,9 +36,9 @@ function PnumberChange()
     </form>
   </div>
 </div>
-<!-- BEGIN show_return_back -->
-<p>« <a href="./?t=links">${STR_BACK}</a></p>
-<!-- END show_return_back -->
+
+<p>« <a href="./?t=links">Back</a></p>
+
 <!-- IF '${ERROR_ALERT}' != '' -->
 <div class="alert alert-danger alert-dismissable">
   <button class="close" aria-hidden="true" data-dismiss="alert">×</button>

@@ -49,6 +49,13 @@ class Model_links extends Model
         
         return core::database()->get_page();
     }
+    
+    public function getCitiesDemographics(){
+        //$con = core::database()->openConnection();
+        
+        $query = "SELECT city, country, COUNT(*) jumlah FROM links GROUP BY city, country ORDER BY COUNT(*) DESC";
+        return core::database()->querySQL($query);
+    }
 
     /**
      * @return mixed
@@ -78,7 +85,7 @@ class Model_links extends Model
         } else {
             $query = "SELECT * FROM " . core::database()->getTableName('links') . " fb LEFT JOIN " . core::database()->getTableName('users') . " usr ON fb.user_id=usr.id_user ";
         }
-        $result = core::database()->querySQL($query);
+        $result = core::database()->getRow(core::database()->querySQL($query));
         return core::database()->getRecordCount($result);
     }
 

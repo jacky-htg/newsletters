@@ -28,20 +28,6 @@ $result->close();
 
 if ($_GET['id'] != 0 && empty($user)) exit('Invalid Token!');
 
-// save the log url
-$ip = get_client_ip_server();
-if ($ip && 'UNKNOWN' !== $ip) {
-    $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-    if(!$query || $query['status'] != 'success') {
-        $query = ['city'=> '', 'country' => ''];
-    }
-}
-
-$insert = "INSERT INTO " . $ConfigDB["prefix"] . "links (`url`, `user_id`, `ip`, `country`, `city`) VALUES ('{$_GET['url']}', {$_GET['id']}, '{$ip}', '{$query['country']}', '{$query['city']}')";
-if (!$dbh->query($insert)){
-    exit('Gagal insert log link');
-}
-            
 if(empty($user['city']) || empty($user['phone'])) {
     if ('POST' === $_SERVER['REQUEST_METHOD']) {
         if (validate($_POST)) {
@@ -50,6 +36,21 @@ if(empty($user['city']) || empty($user['phone'])) {
                 exit('Gagal update profile');
             }
             $dbh->close();
+            
+            // save the log url
+            $ip = get_client_ip_server();
+            if ($ip && 'UNKNOWN' !== $ip) {
+                $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+                if(!$query || $query['status'] != 'success') {
+                    $query = ['city'=> '', 'country' => ''];
+                }
+            }
+
+            $insert = "INSERT INTO " . $ConfigDB["prefix"] . "links (`url`, `user_id`, `ip`, `country`, `city`) VALUES ('{$_GET['url']}', {$_GET['id']}, '{$ip}', '{$query['country']}', '{$query['city']}')";
+            if (!$dbh->query($insert)){
+                exit('Gagal insert log link');
+            }
+
             header("Location:{$_GET['url']}");
         }
     }
@@ -57,6 +58,20 @@ if(empty($user['city']) || empty($user['phone'])) {
     $dbh->close();
 }
 else {
+    // save the log url
+    $ip = get_client_ip_server();
+    if ($ip && 'UNKNOWN' !== $ip) {
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+        if(!$query || $query['status'] != 'success') {
+            $query = ['city'=> '', 'country' => ''];
+        }
+    }
+
+    $insert = "INSERT INTO " . $ConfigDB["prefix"] . "links (`url`, `user_id`, `ip`, `country`, `city`) VALUES ('{$_GET['url']}', {$_GET['id']}, '{$ip}', '{$query['country']}', '{$query['city']}')";
+    if (!$dbh->query($insert)){
+        exit('Gagal insert log link');
+    }
+
     header("Location:{$_GET['url']}");
 }
 
