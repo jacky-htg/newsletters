@@ -18,6 +18,7 @@ $errors = array();
 if (Core_Array::getRequest('action')) {
 	$name = trim(Core_Array::getPost('name'));
 	$body = trim(Core_Array::getPost('body'));
+        $designId = trim(Core_Array::getPost('design_id'));
 	
 	if (empty($name)) $errors[] = core::getLanguage('error', 'empty_subject');
 	if (empty($body)) $errors[] = core::getLanguage('error', 'empty_content');
@@ -25,8 +26,10 @@ if (Core_Array::getRequest('action')) {
 	if (empty($errors)) {
 		$fields = array();
 		$fields['id_template'] = 0;
+                $fields['id_design'] = $designId;
 		$fields['name'] = $name;
 		$fields['body'] = $body;
+                $fields['body_temp'] = $body;
 		$fields['prior'] = (int)Core_Array::getPost('prior');
 		$fields['id_cat'] = (int)Core_Array::getPost('id_cat');
 		$fields['active'] = 'yes';

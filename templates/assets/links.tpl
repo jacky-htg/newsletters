@@ -29,6 +29,7 @@ function PnumberChange()
   <div class="col-lg-12">
     <form class="form-inline" style="margin-bottom: 20px; margin-top: 20px;" method="GET" name="searchform" action="${ACTION}">
      <input type="hidden" name="t" value="links">
+     <input type="hidden" name="type" value="detail">
        <div class="form-group">
        <input class="form-control form-warning input-sm" type="text" name="search" value="${SEARCH}" placeholder="${FORM_SEARCH_NAME}">
        </div>
@@ -56,13 +57,13 @@ function PnumberChange()
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th class="${TH_CLASS_NAME}"><a href="./?t=links&name=${GET_NAME}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->${PAGENAV}">${TABLE_NAME}</a></th>
-        <th class="${TH_CLASS_EMAIL}"><a href="./?t=links&email=${GET_EMAIL}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_EMAIL}</a></th>
-        <th class="${TH_CLASS_URL}"><a href="./?t=links&url=${GET_URL}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_URL}</a></th>
-        <th class="${TH_CLASS_IP}"><a href="./?t=links&url=${GET_IP}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_IP}</a></th>
-        <th class="${TH_CLASS_COUNTRY}"><a href="./?t=links&url=${GET_COUNTRY}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_COUNTRY}</a></th>
-        <th class="${TH_CLASS_CITY}"><a href="./?t=links&url=${GET_CITY}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_CITY}</a></th>
-        <th class="${TH_CLASS_CREATED_AT}"><a href="./?t=links&url=${GET_CREATED_AT}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_CREATED_AT}</a></th>
+        <th class="${TH_CLASS_NAME}"><a href="./?t=links&type=detail&name=${GET_NAME}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->${PAGENAV}">${TABLE_NAME}</a></th>
+        <th class="${TH_CLASS_EMAIL}"><a href="./?t=links&type=detail&email=${GET_EMAIL}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_EMAIL}</a></th>
+        <th class="${TH_CLASS_URL}"><a href="./?t=links&type=detail&url=${GET_URL}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_URL}</a></th>
+        <th class="${TH_CLASS_IP}"><a href="./?t=links&type=detail&url=${GET_IP}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_IP}</a></th>
+        <th class="${TH_CLASS_COUNTRY}"><a href="./?t=links&type=detail&url=${GET_COUNTRY}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_COUNTRY}</a></th>
+        <th class="${TH_CLASS_CITY}"><a href="./?t=links&type=detail&url=${GET_CITY}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_CITY}</a></th>
+        <th class="${TH_CLASS_CREATED_AT}"><a href="./?t=links&type=detail&url=${GET_CREATED_AT}${PAGENAV}<!-- IF '${SEARCH}' != '' -->&search=${SEARCH}<!-- END IF -->">${TABLE_CREATED_AT}</a></th>
       </tr>
     </thead>
     <tbody>

@@ -31,7 +31,7 @@ $order['ip'] = "ip";
 $order['country'] = "country";
 $order['city'] = "city";
 
-$strtmp = "name";
+$strtmp = "created_at";
 $sort = '';
 
 foreach($order as $parametr => $field) {
@@ -69,34 +69,34 @@ if ($arr){
         
 	if (empty($search)){
 		if ($page != 1) {
-			$pervpage = '<a href="./?t=links&page=1' . $sort . '">&lt;&lt;</a>';
-			$perv = '<a href="./?t=links&page=' . ($page - 1) . '' . $sort . '">&lt;</a>';
+			$pervpage = '<a href="./?t=links&type=detail&page=1' . $sort . '">&lt;&lt;</a>';
+			$perv = '<a href="./?t=links&type=detail&page=' . ($page - 1) . '' . $sort . '">&lt;</a>';
 		}
 
 		if ($page != $number) {
-			$nextpage = '<a href="./?t=links&page=' . ($page + 1) . '' . $sort . '">&gt;</a>';
-			$next = '<a href="./?t=links&page=' . $number . '' . $sort . '">&gt;&gt;</a>';
+			$nextpage = '<a href="./?t=links&type=detail&page=' . ($page + 1) . '' . $sort . '">&gt;</a>';
+			$next = '<a href="./?t=links&type=detail&page=' . $number . '' . $sort . '">&gt;&gt;</a>';
 		}									
 
-		if ($page - 2 > 0) $page2left = '<a href="./?t=links&page=' . ($page - 2) .'' . $sort . '">...'.($page - 2) . '</a>';
-		if ($page - 1 > 0) $page1left = '<a href="./?t=links&page=' . ($page - 1) . '' . $sort . '">'.($page - 1) . '</a>';
-		if ($page + 2 <= $number) $page2right = '<a href="./?t=links&page=' . ($page + 2) . '' . $sort . '">' . ($page + 2) . '...</a>';
-		if ($page + 1 <= $number) $page1right = '<a href="./?t=links&page=' . ($page + 1) . '' . $sort . '">' . ($page + 1) . '</a>';
+		if ($page - 2 > 0) $page2left = '<a href="./?t=links&type=detail&page=' . ($page - 2) .'' . $sort . '">...'.($page - 2) . '</a>';
+		if ($page - 1 > 0) $page1left = '<a href="./?t=links&type=detail&page=' . ($page - 1) . '' . $sort . '">'.($page - 1) . '</a>';
+		if ($page + 2 <= $number) $page2right = '<a href="./?t=links&type=detail&page=' . ($page + 2) . '' . $sort . '">' . ($page + 2) . '...</a>';
+		if ($page + 1 <= $number) $page1right = '<a href="./?t=links&type=detail&page=' . ($page + 1) . '' . $sort . '">' . ($page + 1) . '</a>';
 	} else {
 		if ($page != 1) {
-			$pervpage = '<a href="./?t=links&search=' . urlencode($search) . '&page=1' . $sort . '">&lt;&lt;</a>';
-			$perv = '<a href="./?t=links&search=' . urlencode($search) . '&page=' . ($page - 1) . '' . $sort . '">&lt;</a>';
+			$pervpage = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=1' . $sort . '">&lt;&lt;</a>';
+			$perv = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=' . ($page - 1) . '' . $sort . '">&lt;</a>';
 		}								
 
 		if ($page != $number) {
-			$nextpage = '<a href="./?t=links&search=' . urlencode($search).'&page=' . ($page + 1) . '' . $sort . '">&gt;</a>';
-			$next = '<a href="./?t=links&search=' . urlencode($search) . '&page=' . $number . '' . $sort . '">&gt;&gt;</a>';
+			$nextpage = '<a href="./?t=links&type=detail&search=' . urlencode($search).'&page=' . ($page + 1) . '' . $sort . '">&gt;</a>';
+			$next = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=' . $number . '' . $sort . '">&gt;&gt;</a>';
 		}									
 
-		if ($page - 2 > 0) $page2left = '<a href="./?t=links&search=' . urlencode($search) . '&page=' . ($page - 2) . '' . $sort . '">...' . ($page - 2) . '</a>';
-		if ($page - 1 > 0) $page1left = '<a href="./?t=links&search=' . urlencode($search) . '&page=' . ($page - 1) . '' . $sort . '">' . ($page - 1).'</a>';
-		if ($page + 2 <= $number) $page2right = '<a href=".?t=links&search=' . urlencode($search) . '&page=' . ($page + 2) . '' . $sort . '">' . ($page + 2) . '...</a>';
-		if ($page + 1 <= $number) $page1right = '<a href="./?t=links&search=' . urlencode($search) . '&page=' . ($page + 1) . '' . $sort . '">' . ($page + 1) . '</a>';
+		if ($page - 2 > 0) $page2left = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=' . ($page - 2) . '' . $sort . '">...' . ($page - 2) . '</a>';
+		if ($page - 1 > 0) $page1left = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=' . ($page - 1) . '' . $sort . '">' . ($page - 1).'</a>';
+		if ($page + 2 <= $number) $page2right = '<a href=".?t=links&type=detail&search=' . urlencode($search) . '&page=' . ($page + 2) . '' . $sort . '">' . ($page + 2) . '...</a>';
+		if ($page + 1 <= $number) $page1right = '<a href="./?t=links&type=detail&search=' . urlencode($search) . '&page=' . ($page + 1) . '' . $sort . '">' . ($page + 1) . '</a>';
 	}	
 	
 	if ($page > 1)

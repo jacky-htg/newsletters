@@ -36,11 +36,12 @@ class Model_links extends Model
             }
             
             core::database()->parameters = "*, fb.ip AS ip_links, fb.country AS country_links, fb.city AS city_links";
-            core::database()->where = "WHERE " . $tmpl . "";
+            core::database()->where = "WHERE fb.url <> '' AND " . $tmpl . "";
             core::database()->order = "ORDER BY id";
         } else {
             core::database()->tablename = "" . core::database()->getTableName('links') . " fb LEFT JOIN " . core::database()->getTableName('users') . " usr ON fb.user_id=usr.id_user";
             core::database()->parameters = "*, fb.ip AS ip_links, fb.country AS country_links, fb.city AS city_links";
+            core::database()->where = "WHERE fb.url <> ''";
             core::database()->order = "ORDER BY $strtmp";
         }
         
@@ -53,7 +54,7 @@ class Model_links extends Model
     public function getCitiesDemographics(){
         //$con = core::database()->openConnection();
         
-        $query = "SELECT city, country, COUNT(*) jumlah FROM links GROUP BY city, country ORDER BY COUNT(*) DESC";
+        $query = "SELECT city, country, COUNT(*) jumlah FROM links WHERE url IS NOT NULL AND url <> '' GROUP BY city, country ORDER BY COUNT(*) DESC";
         return core::database()->querySQL($query);
     }
 

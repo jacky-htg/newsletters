@@ -26,6 +26,7 @@ if (Core_Array::getRequest('action')){
     if (empty($error)) {
         $fields = array();
         $fields['name'] = $name;
+        $fields['body_temp'] = $body;
         $fields['body'] = $body;
         $fields['prior'] = Core_Array::getPost('prior');
         $fields['id_cat'] = Core_Array::getPost('id_cat');
@@ -80,7 +81,9 @@ $template = $data->getTemplate(Core_Array::getGet('id_template'));
 //value
 $tpl->assign('NAME', Core_Array::getPost('name') == '' ? $template['name'] : Core_Array::getPost('name'));
 $tpl->assign('CONTENT', Core_Array::getPost('body') == '' ? $template['body'] : Core_Array::getPost('body'));
+$tpl->assign('CONTENT_TEMP', Core_Array::getPost('body') == '' ? $template['body_temp'] : Core_Array::getPost('body'));
 $tpl->assign('ID_TEMPLATE', Core_Array::getGet('id_template'));
+$tpl->assign('ID_DESIGN', $template['id_design']);
 $prior = Core_Array::getPost('prior') == '' ? $template['prior'] : Core_Array::getPost('prior');
 $id_cat = Core_Array::getPost('id_cat') == '' ? $template['id_cat'] : Core_Array::getPost('id_cat');
 
